@@ -1,0 +1,343 @@
+<div class="container">
+  <h2 class="{{title}}">
+    ****** Hello {{title}}, Welcome To My Page! ******
+  </h2>
+  <h3>
+    {{getval()}}
+  </h3>
+  <h4>
+    {{num+30}}
+  </h4>
+</div>
+<hr>
+<app-user-list></app-user-list>
+<app-user-list1></app-user-list1>
+<app-country></app-country>
+<app-student-list></app-student-list>
+<app-login></app-login>
+<hr>
+<h2>
+  Demo Of Function Works!
+</h2>
+
+<button (click)="getname('Your FirstName is Dinesh')">
+  CLICK ME.
+</button>&nbsp;&nbsp;&nbsp;
+
+<button (click)="getname(9807654568)">
+  Click Me For My Phone Number.
+</button>
+&nbsp;&nbsp;&nbsp;
+
+<!-- <button (click)="getname2()">
+    Click Me To get the data
+</button> -->
+
+<button (click)="getname2('Button Movement added')">
+  Click Me To Add.
+</button>
+
+&nbsp;&nbsp;&nbsp;
+
+<input type="text" #box1 placeholder="keyup box" (keyup)="getname2(box1.value)" />
+&nbsp;&nbsp;&nbsp;
+
+<input type="text" #box2 placeholder="keydown box" (keydown)="getname2(box2.value)" />
+&nbsp;&nbsp;&nbsp;
+<input type="text" #box3 placeholder="blur box" (blur)="getname2(box3.value)" />
+&nbsp;&nbsp;&nbsp;
+
+<!-- Input and key down are same -->
+
+<!-- <input type="text" #box4 placeholder="Input box" (input)="getname2(box4.value)" />
+&nbsp;&nbsp;&nbsp;
+
+<h1 (mouseover)="getname2('mouse over added')">Code step by step By Mouseover:</h1>
+
+<h1 (mouseleave)="getname2('mouse leave')">Code step by step By MouseLeave:</h1> -->
+
+<hr>
+<h1>New Demo of Get Input Field:</h1>
+<input type="text" #box  placeholder="Enter your Name" name="username">
+
+<button (click)="getvalue(box.value)">
+  Click Me
+</button>
+ 
+<p>
+  Box Value is : {{displayval}}
+</p>
+
+<hr>
+<h1>
+  Demo Counter: {{title1}}
+</h1>
+
+<button (click)="counter1('minus')">
+  --
+</button>
+<p>
+  Counter:{{count}}
+</p>
+<button (click)="counter1('add')">
+  ++
+</button>
+
+<hr>
+<h1>Demo of {{title2}}</h1>
+
+<!-- Interpolation -->
+<input type="text" value={{name2}} disabled={{disable}}>
+
+<!-- property-binding -->
+<input type="text" [value]=name2 [disabled]=disable>
+
+<!-- If-statements -->
+<h1>Demo Of {{title3}}</h1>
+<h1 *ngIf="show;then ifblock else elseblock">
+  Hi My Name is Angular
+</h1>
+
+<hr>
+<ng-template #ifblock>
+  <h1>If Condition.</h1>
+</ng-template>
+
+<ng-template #elseblock>
+    <h1>Else Condition.</h1>
+</ng-template>
+
+<hr>
+<!-- else-if -->
+<h1>Demo of :{{title4}}</h1>
+
+<ng-template [ngIf]="color ==='red'">
+    <h1 style="color: red;">Given color is Red</h1>
+</ng-template>
+
+<ng-template [ngIf]="color ==='green'">
+    <h1 style="color: green;">Given color is Green</h1>
+</ng-template>
+
+<ng-template [ngIf]="color ==='blue'">
+    <h1 style="color: blue;">Given color is Blue</h1>
+</ng-template>
+
+<ng-template [ngIf]="color==='brown'">
+  <h1 style="color: brown;">Given Color is Brown</h1>
+</ng-template>
+
+<hr>
+<!-- Switch-case  -->
+<h1>
+ Demo Of {{title5}}:
+</h1>
+
+<div [ngSwitch]="color1">
+    <h1 *ngSwitchCase="'yellowgreen'" style="color: yellowgreen;">
+        Yellowgreen
+    </h1>
+    <h1 *ngSwitchCase="'violet'" style="color:violet">
+        violet
+    </h1>
+    <h1 *ngSwitchCase="'orange'" style="color: orange;"> 
+        orange
+    </h1>
+    <h1 *ngSwitchDefault>
+        Unknown Color
+    </h1>
+</div>
+
+<hr>
+<!-- Loop  -->
+
+<h1>
+  Demo Of {{title6}}:
+</h1>
+
+<h4 *ngFor="let data of customers">
+    Customer Names Are: {{data}}
+</h4>
+
+<h4 *ngFor="let data of customerdetails">
+    Customer Details Are: {{data.Age}} --- {{data.Location}} ---{{data.Phone}}
+</h4>
+
+<hr>
+<!-- Nested-loop  -->
+<!-- NestedArray  -->
+<h2>
+  Demo Of {{title7}}:
+</h2>
+
+<ul *ngFor="let data of users">
+    <li>Name is:{{data.name}}</li>
+    <li>Age is:{{data.Age}}</li>
+    <li>Phone is:{{data.Phone}}</li>
+
+    <ul *ngFor="let account of data.Socialmedia">
+      <li>Social Media list are:{{account}}</li>
+    </ul>
+
+</ul>
+
+<hr>
+<!-- 2-stylebinding  -->
+
+<h2>
+  Demo Of {{title8}}:
+</h2>
+
+<h2 [style.color]="color" [style.backgroundColor]="bgcolor">
+  My Name Is Dynamic Binding
+</h2>
+
+<button (click)="updatedcolor()">
+  Click Me
+</button>
+
+<hr>
+<!-- header  -->
+
+<h2>Demo Of {{title9}};</h2>
+<app-header></app-header>
+<hr>
+
+<!-- Forms Module  -->
+<h2>Demo of {{title10}}:</h2>
+
+<form #basicforms="ngForm" (submit)="getforms(basicforms.value)">
+  <input type="text" ngModel name="username" placeholder="Enter Your Name">
+  <br><br>
+  <input type="text" ngModel name="email" placeholder="Enter Your email">
+  <br><br>
+  <input type="text" ngModel name="password" placeholder="Enter Your password">
+  <br><br>
+  <button>
+    Click Me To Register
+  </button>
+</form>
+
+<ul>
+  <li>UserName is:  {{userdata.username}}</li>
+  <li>EmailId is:   {{userdata.email}}</li>
+  <li>Password is:  {{userdata.password}}</li>
+</ul>
+
+<hr>
+<!-- Toggle Element(Hide and Show the Element)  -->
+
+<h2>
+  Demo Of {{title10}}:
+</h2>
+
+<h2 *ngIf="display">
+    Toggle the element
+</h2>
+
+<button (click)="getData()">
+  Click Me
+</button>
+
+<hr>
+<!-- Bootstrap with Angular -->
+<h2>
+  Demo Of {{title12}};
+</h2>
+
+<p>
+  <ngb-alert [dismissible]="false">
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+  </ngb-alert>
+</p>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="Simple">
+    <ng-template ngbPanelContent>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+      labore sustainable VHS.
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel>
+    <ng-template ngbPanelTitle>
+      <span>&#9733; <b>Fancy</b> title &#9733;</span>
+    </ng-template>
+    <ng-template ngbPanelContent>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+      labore sustainable VHS.
+    </ng-template>
+  </ngb-panel>
+  <ngb-panel title="Disabled">
+    <ng-template ngbPanelContent>
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+      aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+      sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+      craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+      occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+      labore sustainable VHS.
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+<hr>
+
+<!-- Material UI  -->
+
+<h2>
+  Demo Of {{title12}};
+</h2>
+
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
+<div class="example-button-row">
+  <button mat-stroked-button>Basic</button>
+  <button mat-stroked-button color="primary">Primary</button>
+  <button mat-stroked-button color="accent">Accent</button>
+  <button mat-stroked-button color="warn">Warn</button>
+  <button mat-stroked-button disabled>Disabled</button>
+  <a mat-stroked-button href="https://www.google.com/" target="_blank">Link</a>
+</div>
+<hr>
+
+<!-- Todo list  -->
+
+<h2>
+  {{title14}};
+</h2>
+
+<input type="text" name="addtask" #task>
+<br>
+<br>
+<button (click)="gettask(task.value)">
+  Click Me
+</button>
+
+<ul *ngFor="let data1 of list">
+  <li>{{data1.name}} <button (click)="removetask(data1.id)">Remove Task</button></li>
+</ul>
+<hr>
+
+<!-- data-parent to child component  -->
+<h2>
+  Demo Of {{title15}};
+</h2>
+<app-child [item]="data"></app-child>
+<app-child [item1]="data"></app-child>
+
+<button (click)="updatebutton()">
+  Updated Child Component
+</button>
+
+<hr>
+
+<!-- Reusable Component  -->
+
+<h2>
+  Demo Of {{title16}}
+</h2>
